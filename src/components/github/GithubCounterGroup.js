@@ -5,9 +5,7 @@ import { listOfNames } from '../../helpers/strings'
 
 const useStyles = makeStyles(() => ({
   group: {
-    width: '35px',
-    height: '20px',
-    padding: '8px 15px',
+    padding: '5px 10px',
     borderRight: '1px solid #ddd',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica',
     fontSize: '14px',
@@ -24,7 +22,7 @@ const useStyles = makeStyles(() => ({
     }
   },
   emoji: {
-    fontSize: '21px',
+    fontSize: '15px',
     marginTop: '1px',
   },
   tooltip: {
