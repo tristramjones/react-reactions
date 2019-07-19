@@ -16,8 +16,6 @@ const useStyles = makeStyles(() => ({
   },
   add: {
     fill: '#4078c0',
-    width: '25px',
-    height: '20px',
     padding: '8px 15px',
     display: 'flex',
     justifyContent: 'space-between',
