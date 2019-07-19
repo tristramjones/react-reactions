@@ -1,47 +1,43 @@
 /* eslint-disable max-len, no-shadow */
 
 import React from 'react'
-import reactCSS, { hover } from 'reactcss'
+import { makeStyles } from '@material-ui/classes'
 import _ from 'lodash'
 
 import GithubCounterGroup from './GithubCounterGroup'
 
-export const GithubCounter = ({ hover, counters, user, onSelect, onAdd }) => {
-  const styles = reactCSS({
-    'default': {
-      counter: {
-        height: '36px',
-        border: '1px solid #ddd',
-        borderRadius: '4px',
-        display: 'flex',
-        background: '#fff',
-      },
-      add: {
-        fill: '#4078c0',
-        width: '25px',
-        height: '20px',
-        padding: '8px 15px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        cursor: 'pointer',
+const useStyles = makeStyles(() => ({
+  counter: {
+    height: '36px',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    display: 'flex',
+    background: '#fff',
+  },
+  add: {
+    fill: '#4078c0',
+    width: '25px',
+    height: '20px',
+    padding: '8px 15px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    cursor: 'pointer',
+    opacity: '0',
+    transition: 'opacity 0.1s ease-in-out',
+    '&:hover': {
+      opacity: '1',
+    }
+  },
 
-        opacity: '0',
-        transition: 'opacity 0.1s ease-in-out',
-      },
-    },
-    'hover': {
-      add: {
-        opacity: '1',
-      },
-    },
-  }, { hover })
+}))
 
+export const GithubCounter = ({ counters, user, onSelect, onAdd }) => {
+  const classes = useStyles();
   const groups = _.groupBy(counters, 'emoji')
 
-
   return (
-    <div style={ styles.counter }>
+    <div className={ classes.counter }>
       { _.map(groups, (c, emoji) => {
         const names = _.map(c, 'by')
         return (
@@ -55,7 +51,7 @@ export const GithubCounter = ({ hover, counters, user, onSelect, onAdd }) => {
           />
         )
       }) }
-      <div style={ styles.add } onClick={ onAdd }>
+      <div className={ classes.add } onClick={ onAdd }>
         <svg height="16" width="7" viewBox="0 0 7 16" >
           <path d="M4 7V4H3v3H0v1h3v3h1V8h3V7H4z"></path>
         </svg>
@@ -67,4 +63,4 @@ export const GithubCounter = ({ hover, counters, user, onSelect, onAdd }) => {
   )
 }
 
-export default hover(GithubCounter)
+export default GithubCounter
