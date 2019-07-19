@@ -1,7 +1,7 @@
 /* eslint-disable max-len, no-shadow */
 
 import React from 'react'
-import { makeStyles } from '@material-ui/classes'
+import { makeStyles } from '@material-ui/styles'
 import _ from 'lodash'
 
 import GithubCounterGroup from './GithubCounterGroup'
